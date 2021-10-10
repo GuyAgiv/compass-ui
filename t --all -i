@@ -1,0 +1,397 @@
+[33mcommit 383b89197dab1a20a608210649a2f87e001770c8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: guyagiv <guyagiv@gmail.com>
+Date:   Thu Oct 7 17:52:27 2021 +0300
+
+    map component and service has been added!
+
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex 9fb50d4..c249ff7 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -1556,6 +1556,65 @@[m
+         "schema-utils": "^2.7.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "@mapbox/geojson-rewind": {[m
+[32m+[m[32m      "version": "0.5.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@mapbox/geojson-rewind/-/geojson-rewind-0.5.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-eL7fMmfTBKjrb+VFHXCGv9Ot0zc3C0U+CwXo1IrP+EPwDczLoXv34Tgq3y+2mPSFNVUXgU42ILWJTC7145KPTA==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "get-stream": "^6.0.1",[m
+[32m+[m[32m        "minimist": "^1.2.5"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "get-stream": {[m
+[32m+[m[32m          "version": "6.0.1",[m
+[32m+[m[32m          "resolved": "https://registry.npmjs.org/get-stream/-/get-stream-6.0.1.tgz",[m
+[32m+[m[32m          "integrity": "sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg=="[m
+[32m+[m[32m        }[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "@mapbox/geojson-types": {[m
+[32m+[m[32m      "version": "1.0.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@mapbox/geojson-types/-/geojson-types-1.0.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-e9EBqHHv3EORHrSfbR9DqecPNn+AmuAoQxV6aL8Xu30bJMJR1o8PZLZzpk1Wq7/NfCbuhmakHTPYRhoqLsXRnw=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "@mapbox/jsonlint-lines-primitives": {[m
+[32m+[m[32m      "version": "2.0.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@mapbox/jsonlint-lines-primitives/-/jsonlint-lines-primitives-2.0.2.tgz",[m
+[32m+[m[32m      "integrity": "sha1-zlblOfg1UrWNENZy6k1vya3HsjQ="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "@mapbox/mapbox-gl-supported": {[m
+[32m+[m[32m      "version": "2.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@mapbox/mapbox-gl-supported/-/mapbox-gl-supported-2.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-zu4udqYiBrKMQKwpKJ4hhPON7tz0QR/JZ3iGpHnNWFmH3Sv/ysxlICATUtGCFpsyJf2v1WpFhlzaZ3GhhKmPMA=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "@mapbox/point-geometry": {[m
+[32m+[m[32m      "version": "0.1.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz",[m
+[32m+[m[32m      "integrity": "sha1-ioP5M1x4YO/6Lu7KJUMyqgru2PI="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "@mapbox/tiny-sdf": {[m
+[32m+[m[32m      "version": "2.0.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@mapbox/tiny-sdf/-/tiny-sdf-2.0.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-XBQG3wvIaya9t2OHcWLFYv8cdg48roqOj8XhKzKSvAIg5D1scC+a+tlq0wGjPZkL+k6dL8TyOBR7RKDGh3kefQ=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "@mapbox/unitbezier": {[m
+[32m+[m[32m      "version": "0.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@mapbox/unitbezier/-/unitbezier-0.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha1-FWUb1VOme4WB+zmIEMmK2Go0Uk4="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "@mapbox/vector-tile": {[m
+[32m+[m[32m      "version": "1.3.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@mapbox/vector-tile/-/vector-tile-1.3.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-MCEddb8u44/xfQ3oD+Srl/tNcQoqTw3goGk2oLsrFxOTc3dUp+kAnby3PvAeeBYSMSjSPD1nd1AJA6W49WnoUw==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "@mapbox/point-geometry": "~0.1.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "@mapbox/whoots-js": {[m
+[32m+[m[32m      "version": "3.1.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@mapbox/whoots-js/-/whoots-js-3.1.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-Es6WcD0nO5l+2BOQS4uLfNPYQaNDfbot3X1XUoloz+x0mPDS3eeORZJl06HXjwBG1fOGwCRnzK88LMdxKRrd6Q=="[m
+[32m+[m[32m    },[m
+     "@ngtools/webpack": {[m
+       "version": "12.1.4",[m
+       "resolved": "https://registry.npmjs.org/@ngtools/webpack/-/webpack-12.1.4.tgz",[m
+[36m@@ -1733,6 +1792,11 @@[m
+       "integrity": "sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "@types/geojson": {[m
+[32m+[m[32m      "version": "7946.0.8",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.8.tgz",[m
+[32m+[m[32m      "integrity": "sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA=="[m
+[32m+[m[32m    },[m
+     "@types/glob": {[m
+       "version": "7.1.4",[m
+       "resolved": "https://registry.npmjs.org/@types/glob/-/glob-7.1.4.tgz",[m
+[36m@@ -1755,6 +1819,14 @@[m
+       "integrity": "sha512-YSBPTLTVm2e2OoQIDYx8HaeWJ5tTToLH67kXR7zYNGupXMEHa2++G8k+DczX2cFVgalypqtyZIcU19AFcmOpmg==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "@types/mapbox-gl": {[m
+[32m+[m[32m      "version": "2.4.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@types/mapbox-gl/-/mapbox-gl-2.4.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-mKgjmhUN780YGy9ZEyJK0Sr9gMtERmTQimGsIa5WrBHPlBXdmjYfqtz8nSMI7hOnQFphcuSMyqQswaQESFLHsA==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "@types/geojson": "*"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "@types/minimatch": {[m
+       "version": "3.0.5",[m
+       "resolved": "https://registry.npmjs.org/@types/minimatch/-/minimatch-3.0.5.tgz",[m
+[36m@@ -3667,6 +3739,11 @@[m
+       "integrity": "sha512-FYDTSHb/7KXsWICVsxdmiExPjCfRC4qRFBdVwv7Ax9hMnvMmEjP9RfxTEZ3qPZGmADDn2vAKSo9UcN1jKVYscg==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "csscolorparser": {[m
+[32m+[m[32m      "version": "1.0.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/csscolorparser/-/csscolorparser-1.0.3.tgz",[m
+[32m+[m[32m      "integrity": "sha1-s085HupNqPPpgjHizNjfnAQfFxs="[m
+[32m+[m[32m    },[m
+     "cssdb": {[m
+       "version": "4.4.0",[m
+       "resolved": "https://registry.npmjs.org/cssdb/-/cssdb-4.4.0.tgz",[m
+[36m@@ -4061,6 +4138,11 @@[m
+         "domhandler": "^4.2.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "earcut": {[m
+[32m+[m[32m      "version": "2.2.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/earcut/-/earcut-2.2.3.tgz",[m
+[32m+[m[32m      "integrity": "sha512-iRDI1QeCQIhMCZk48DRDMVgQSSBDmbzzNhnxIo+pwx3swkfjMh6vh0nWLq1NdvGHLKH6wIrAM3vQWeTj6qeoug=="[m
+[32m+[m[32m    },[m
+     "ecc-jsbn": {[m
+       "version": "0.1.2",[m
+       "resolved": "https://registry.npmjs.org/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz",[m
+[36m@@ -4838,6 +4920,11 @@[m
+       "integrity": "sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "geojson-vt": {[m
+[32m+[m[32m      "version": "3.2.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/geojson-vt/-/geojson-vt-3.2.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-EvGQQi/zPrDA6zr6BnJD/YhwAkBP8nnJ9emh3EnHQKVMfg/MRVtPbMYdgVy/IaEmn4UfagD2a6fafPDL5hbtwg=="[m
+[32m+[m[32m    },[m
+     "get-caller-file": {[m
+       "version": "2.0.5",[m
+       "resolved": "https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz",[m
+[36m@@ -4879,6 +4966,11 @@[m
+         "assert-plus": "^1.0.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "gl-matrix": {[m
+[32m+[m[32m      "version": "3.4.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/gl-matrix/-/gl-matrix-3.4.3.tgz",[m
+[32m+[m[32m      "integrity": "sha512-wcCp8vu8FT22BnvKVPjXa/ICBWRq/zjFfdofZy1WSpQZpphblv12/bOQLBC1rMM7SGOFS9ltVmKOHil5+Ml7gA=="[m
+[32m+[m[32m    },[m
+     "glob": {[m
+       "version": "7.1.7",[m
+       "resolved": "https://registry.npmjs.org/glob/-/glob-7.1.7.tgz",[m
+[36m@@ -4934,6 +5026,11 @@[m
+       "integrity": "sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "grid-index": {[m
+[32m+[m[32m      "version": "1.1.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/grid-index/-/grid-index-1.1.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-HZRwumpOGUrHyxO5bqKZL0B0GlUpwtCAzZ42sgxUPniu33R1LSFH5yrIcBCHjkctCAh3mtWKcKd9J4vDDdeVHA=="[m
+[32m+[m[32m    },[m
+     "handle-thing": {[m
+       "version": "2.0.1",[m
+       "resolved": "https://registry.npmjs.org/handle-thing/-/handle-thing-2.0.1.tgz",[m
+[36m@@ -5358,8 +5455,7 @@[m
+     "ieee754": {[m
+       "version": "1.2.1",[m
+       "resolved": "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz",[m
+[31m-      "integrity": "sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==",[m
+[31m-      "dev": true[m
+[32m+[m[32m      "integrity": "sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA=="[m
+     },[m
+     "ignore": {[m
+       "version": "5.1.8",[m
+[36m@@ -6283,6 +6379,11 @@[m
+         "source-map-support": "^0.5.5"[m
+       }[m
+     },[m
+[32m+[m[32m    "kdbush": {[m
+[32m+[m[32m      "version": "3.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/kdbush/-/kdbush-3.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-hRkd6/XW4HTsA9vjVpY9tuXJYLSlelnkTmVFu4M9/7MIYQtFcHpbugAU7UbOfjOiVSVYl2fqgBuJ32JUmRo5Ew=="[m
+[32m+[m[32m    },[m
+     "killable": {[m
+       "version": "1.0.1",[m
+       "resolved": "https://registry.npmjs.org/killable/-/killable-1.0.1.tgz",[m
+[36m@@ -6596,6 +6697,36 @@[m
+         "object-visit": "^1.0.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "mapbox-gl": {[m
+[32m+[m[32m      "version": "2.5.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/mapbox-gl/-/mapbox-gl-2.5.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-mUYOe8z+00fWEtBDAtiNeVDH2wsoEQlOK0UskbIPKnG1XRTDYzzofh8f/1BHe1Q3OLxce2TQ+Ou3uo1yAlePaA==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "@mapbox/geojson-rewind": "^0.5.0",[m
+[32m+[m[32m        "@mapbox/geojson-types": "^1.0.2",[m
+[32m+[m[32m        "@mapbox/jsonlint-lines-primitives": "^2.0.2",[m
+[32m+[m[32m        "@mapbox/mapbox-gl-supported": "^2.0.0",[m
+[32m+[m[32m        "@mapbox/point-geometry": "^0.1.0",[m
+[32m+[m[32m        "@mapbox/tiny-sdf": "^2.0.2",[m
+[32m+[m[32m        "@mapbox/unitbezier": "^0.0.0",[m
+[32m+[m[32m        "@mapbox/vector-tile": "^1.3.1",[m
+[32m+[m[32m        "@mapbox/whoots-js": "^3.1.0",[m
+[32m+[m[32m        "csscolorparser": "~1.0.3",[m
+[32m+[m[32m        "earcut": "^2.2.2",[m
+[32m+[m[32m        "geojson-vt": "^3.2.1",[m
+[32m+[m[32m        "gl-matrix": "^3.3.0",[m
+[32m+[m[32m        "grid-index": "^1.1.0",[m
+[32m+[m[32m        "minimist": "^1.2.5",[m
+[32m+[m[32m        "murmurhash-js": "^1.0.0",[m
+[32m+[m[32m        "pbf": "^3.2.1",[m
+[32m+[m[32m        "potpack": "^1.0.1",[m
+[32m+[m[32m        "quickselect": "^2.0.0",[m
+[32m+[m[32m        "rw": "^1.3.3",[m
+[32m+[m[32m        "supercluster": "^7.1.3",[m
+[32m+[m[32m        "tinyqueue": "^2.0.3",[m
+[32m+[m[32m        "vt-pbf": "^3.1.1"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "mdn-data": {[m
+       "version": "2.0.14",[m
+       "resolved": "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.14.tgz",[m
+[36m@@ -6809,8 +6940,7 @@[m
+     "minimist": {[m
+       "version": "1.2.5",[m
+       "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz",[m
+[31m-      "integrity": "sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==",[m
+[31m-      "dev": true[m
+[32m+[m[32m      "integrity": "sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw=="[m
+     },[m
+     "minipass": {[m
+       "version": "3.1.3",[m
+[36m@@ -6938,6 +7068,11 @@[m
+       "integrity": "sha1-iZ8R2WhuXgXLkbNdXw5jt3PPyQE=",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "murmurhash-js": {[m
+[32m+[m[32m      "version": "1.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/murmurhash-js/-/murmurhash-js-1.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha1-sGJ44h/Gw3+lMTcysEEry2rhX1E="[m
+[32m+[m[32m    },[m
+     "mute-stream": {[m
+       "version": "0.0.8",[m
+       "resolved": "https://registry.npmjs.org/mute-stream/-/mute-stream-0.0.8.tgz",[m
+[36m@@ -7635,6 +7770,15 @@[m
+       "integrity": "sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "pbf": {[m
+[32m+[m[32m      "version": "3.2.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/pbf/-/pbf-3.2.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-ClrV7pNOn7rtmoQVF4TS1vyU0WhYRnP92fzbfF75jAIwpnzdJXf8iTd4CMEqO4yUenH6NDqLiwjqlh6QgZzgLQ==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "ieee754": "^1.1.12",[m
+[32m+[m[32m        "resolve-protobuf-schema": "^2.1.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "performance-now": {[m
+       "version": "2.1.0",[m
+       "resolved": "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz",[m
+[36m@@ -9283,6 +9427,11 @@[m
+         "uniq": "^1.0.1"[m
+       }[m
+     },[m
+[32m+[m[32m    "potpack": {[m
+[32m+[m[32m      "version": "1.0.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/potpack/-/potpack-1.0.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-15vItUAbViaYrmaB/Pbw7z6qX2xENbFSTA7Ii4tgbPtasxm5v6ryKhKtL91tpWovDJzTiZqdwzhcFBCwiMVdVw=="[m
+[32m+[m[32m    },[m
+     "pretty-bytes": {[m
+       "version": "5.6.0",[m
+       "resolved": "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.6.0.tgz",[m
+[36m@@ -9311,6 +9460,11 @@[m
+         "retry": "^0.12.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "protocol-buffers-schema": {[m
+[32m+[m[32m      "version": "3.6.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/protocol-buffers-schema/-/protocol-buffers-schema-3.6.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-TdDRD+/QNdrCGCE7v8340QyuXd4kIWIgapsE2+n/SaGiSSbomYl4TjHlvIoCWRpE7wFt02EpB35VVA2ImcBVqw=="[m
+[32m+[m[32m    },[m
+     "proxy-addr": {[m
+       "version": "2.0.7",[m
+       "resolved": "https://registry.npmjs.org/proxy-addr/-/proxy-addr-2.0.7.tgz",[m
+[36m@@ -9379,6 +9533,11 @@[m
+       "integrity": "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "quickselect": {[m
+[32m+[m[32m      "version": "2.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/quickselect/-/quickselect-2.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-RKJ22hX8mHe3Y6wH/N3wCM6BWtjaxIyyUIkpHOvfFnxdI4yD4tBXEBKSbriGujF6jnSVkJrffuo6vxACiSSxIw=="[m
+[32m+[m[32m    },[m
+     "randombytes": {[m
+       "version": "2.1.0",[m
+       "resolved": "https://registry.npmjs.org/randombytes/-/randombytes-2.1.0.tgz",[m
+[36m@@ -9712,6 +9871,14 @@[m
+       "integrity": "sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "resolve-protobuf-schema": {[m
+[32m+[m[32m      "version": "2.1.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/resolve-protobuf-schema/-/resolve-protobuf-schema-2.1.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-kI5ffTiZWmJaS/huM8wZfEMer1eRd7oJQhDuxeCLe3t7N7mX3z94CN0xPxBQxFYQTSNz9T0i+v6inKqSdK8xrQ==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "protocol-buffers-schema": "^3.3.1"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "resolve-url": {[m
+       "version": "0.2.1",[m
+       "resolved": "https://registry.npmjs.org/resolve-url/-/resolve-url-0.2.1.tgz",[m
+[36m@@ -9829,6 +9996,11 @@[m
+         "queue-microtask": "^1.2.2"[m
+       }[m
+     },[m
+[32m+[m[32m    "rw": {[m
+[32m+[m[32m      "version": "1.3.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/rw/-/rw-1.3.3.tgz",[m
+[32m+[m[32m      "integrity": "sha1-P4Yt+pGrdmsUiF700BEkv9oHT7Q="[m
+[32m+[m[32m    },[m
+     "rxjs": {[m
+       "version": "6.6.7",[m
+       "resolved": "https://registry.npmjs.org/rxjs/-/rxjs-6.6.7.tgz",[m
+[36m@@ -10715,6 +10887,14 @@[m
+         "normalize-path": "^3.0.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "supercluster": {[m
+[32m+[m[32m      "version": "7.1.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/supercluster/-/supercluster-7.1.3.tgz",[m
+[32m+[m[32m      "integrity": "sha512-7+bR4FbF5SYsmkHfDp61QiwCKtwNDyPsddk9TzfsDA5DQr5Goii5CVD2SXjglweFCxjrzVZf945ahqYfUIk8UA==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "kdbush": "^3.0.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "supports-color": {[m
+       "version": "5.5.0",[m
+       "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-5.5.0.tgz",[m
+[36m@@ -10919,6 +11099,11 @@[m
+       "integrity": "sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "tinyqueue": {[m
+[32m+[m[32m      "version": "2.0.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/tinyqueue/-/tinyqueue-2.0.3.tgz",[m
+[32m+[m[32m      "integrity": "sha512-ppJZNDuKGgxzkHihX8v9v9G5f+18gzaTfrukGrq6ueg0lmH4nqVnA2IPG0AEH3jKEk2GRJCUhDoqpoiw3PHLBA=="[m
+[32m+[m[32m    },[m
+     "tmp": {[m
+       "version": "0.0.33",[m
+       "resolved": "https://registry.npmjs.org/tmp/-/tmp-0.0.33.tgz",[m
+[36m@@ -11278,6 +11463,16 @@[m
+       "integrity": "sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=",[m
+       "dev": true[m
+     },[m
+[32m+[m[32m    "vt-pbf": {[m
+[32m+[m[32m      "version": "3.1.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/vt-pbf/-/vt-pbf-3.1.3.tgz",[m
+[32m+[m[32m      "integrity": "sha512-2LzDFzt0mZKZ9IpVF2r69G9bXaP2Q2sArJCmcCgvfTdCCZzSyz4aCLoQyUilu37Ll56tCblIZrXFIjNUpGIlmA==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "@mapbox/point-geometry": "0.1.0",[m
+[32m+[m[32m        "@mapbox/vector-tile": "^1.3.1",[m
+[32m+[m[32m        "pbf": "^3.2.1"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "watchpack": {[m
+       "version": "2.2.0",[m
+       "resolved": "https://registry.npmjs.org/watchpack/-/watchpack-2.2.0.tgz",[m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex cd0bada..b48cc4f 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -20,6 +20,8 @@[m
+     "@angular/platform-browser": "~12.1.0",[m
+     "@angular/platform-browser-dynamic": "~12.1.0",[m
+     "@angular/router": "~12.1.0",[m
+[32m+[m[32m    "@types/mapbox-gl": "^2.4.2",[m
+[32m+[m[32m    "mapbox-gl": "^2.5.1",[m
+     "rxjs": "~6.6.0",[m
+     "tslib": "^2.2.0",[m
+     "zone.js": "~0.11.4"[m
+[1mdiff --git a/src/app/app.component.html b/src/app/app.component.html[m
+[1mindex c28b688..5d297a3 100644[m
+[1m--- a/src/app/app.component.html[m
+[1m+++ b/src/app/app.component.html[m
+[36m@@ -1,501 +1 @@[m
+[31m-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->[m
+[31m-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->[m
+[31m-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->[m
+[31m-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->[m
+[31m-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->[m
+[31m-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->[m
+[31m-<!-- * * * * * * * to get started with your project! * * * * * * * * -->[m
+[31m-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->[m
+[31m-[m
+[31m-<style>[m
+[31m-  :host {[m
+[31m-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Em
